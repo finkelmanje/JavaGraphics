@@ -21,12 +21,12 @@ public class GraphicsRunner extends JFrame
 
 		setSize(WIDTH,HEIGHT); //jframe type of method
 
-		getContentPane().add(new SmileyFace());
+	//	getContentPane().add(new SmileyFace());
 		
 		//add other classes to run them 
 		//BigHouse, Robot, or ShapePanel 
                 
-             //   getContentPane().add(new BigHouse());
+                getContentPane().add(new BigHouse());
 
 		setVisible(true);
 
