@@ -7,7 +7,6 @@ package GraphicsUnit1;
 //Date -
 //Class -
 //Lab  -
-//don't do this or shapepanel tonight
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -23,7 +22,10 @@ public class Shape
    public Shape(int x, int y, int wid, int ht, Color col)
    {
 		xPos = x;
-		//finish this constructor
+		yPos = y;
+                width = wid;
+                height = ht;
+                color = col;
    }
 
 
@@ -31,6 +33,23 @@ public class Shape
    {
       window.setColor(color);
       window.fillRect(xPos, yPos, width, height);
+      
+      window.setColor(Color.RED);
+      window.fillRect(xPos + xPos/22, yPos + yPos/12, width - 10, height - 30);
+      
+      window.setColor(Color.GREEN);
+      window.fillOval(xPos + xPos/12, yPos + yPos/5, width - 30, height - 70);
+      
+      window.setColor(Color.BLUE);
+      window.draw3DRect(xPos, yPos, width, height, true);
+      
+      window.drawLine(xPos, yPos, xPos - 20, yPos - 20);
+      
+      window.drawLine(xPos + width, yPos, xPos + width + 20, yPos - 20);
+      
+ 
+      
+      
 
       //draw whatever you want
       //    ^
