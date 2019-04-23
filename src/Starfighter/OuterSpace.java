@@ -21,6 +21,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 	private Ship ship;
 	private Alien alienOne;
 	private Alien alienTwo;
+        private Ammo ammo1;
 
 	/* uncomment once you are ready for this part
 	 *
@@ -36,7 +37,12 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		setBackground(Color.black);
 
 		keys = new boolean[5];
-               ship = new Ship(50,50, 1);
+               ship = new Ship(50,50, 50, 50, 1);
+               alienOne = new Alien(100,100, 50, 50,3);
+               alienTwo = new Alien(200, 100, 50, 50, 5);
+               ammo1 = new Ammo(ship.getX() + 5, ship.getY(), 5);
+               
+        
 
 		//instantiate other instance variables
 		//Ship, Alien
@@ -50,6 +56,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
    public void update(Graphics window)
    {
 	   paint(window);
+         
    }
 
 	public void paint( Graphics window )
@@ -70,29 +77,51 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		graphToBack.drawString("StarFighter ", 25, 50 );
 		graphToBack.setColor(Color.BLACK);
 		graphToBack.fillRect(0,0,800,600);
+               
+                setVisible(true);
+                ship.draw(graphToBack);
+               
+                 alienOne.draw(graphToBack);
+                 alienTwo.draw(graphToBack);
+                 ammo1.draw(graphToBack);
+                
+
 
 		if(keys[0] == true)
 		{
 			ship.move("LEFT");
+                        ammo1.setX(ship.getX());
+                        ammo1.setY(ship.getY());
+                        
 		}
                 
                 if(keys[1] == true)
 		{
 			ship.move("RIGHT");
+                        ammo1.setX(ship.getX());
+                        ammo1.setY(ship.getY());
 		}
                 
                 if(keys[2] == true)
 		{
 			ship.move("UP");
+                        ammo1.setX(ship.getX());
+                        ammo1.setY(ship.getY());
 		}
                 
                 if(keys[3] == true)
 		{
 			ship.move("DOWN");
+                        ammo1.setX(ship.getX());
+                        ammo1.setY(ship.getY());
 		}
                 
+                if (keys[4] == true) {
+                    ammo1.canShoot(true);
+                    ammo1.move("UP");
+                }
                 
-
+                 
 		//add code to move Ship, Alien, etc.
 
 

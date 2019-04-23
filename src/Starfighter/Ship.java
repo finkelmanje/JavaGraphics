@@ -39,12 +39,13 @@ public class Ship extends MovingThing
 		speed=s;
 		try
 		{
-			URL url = getClass().getResource("Starfighter/ship.jpg");
+			URL url = getClass().getResource("images/ship.jpg");
 			image = ImageIO.read(url);
+                        System.out.println(url);
 		}
 		catch(Exception e)
 		{
-			//feel free to do something here
+			System.out.println("no");
 		}
 	}
 
@@ -65,12 +66,13 @@ public class Ship extends MovingThing
 		//add code here
             if (direction.equals("UP")) {
                 
-                setY(getY() + speed);    
+                setY(getY() - speed); 
+                
             }
             
             if (direction.equals("DOWN")) {
                 
-                setY(getY() - speed);    
+                setY(getY() + speed);    
             }
             
             if (direction.equals("RIGHT")) {

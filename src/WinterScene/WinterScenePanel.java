@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class WinterScenePanel extends JPanel implements Runnable
 {
 	private List<AbstractShape> shapes;
+        private List<AbstractShape> fancyshapes;
 	private AbstractShape sMan;
 
 	public WinterScenePanel()
@@ -25,10 +26,19 @@ public class WinterScenePanel extends JPanel implements Runnable
 		setVisible(true);
 		//refer shapes to a new ArrayList of AbstractShape
                 shapes = new ArrayList<AbstractShape>();
+                fancyshapes = new ArrayList<AbstractShape>();
 		//populate the list with 50 unique snowflakes
+                 for (int i = 0; i<50; i++) {
+                     shapes.add(new SimpleSnowFlake(25+ (int) (Math.random() * 700),(int) (Math.random() * 500),30,30, Color.WHITE, 5, 5));
+                 }
+                 
+                  for (int i = 0; i<50; i++) {
+                     fancyshapes.add(new FancySnowFlake(25+ (int) (Math.random() * 700),(int) (Math.random() * 500),30,30));
+                 }
+                 
                  
 		//instantiate a snowman
-
+                sMan = new SnowMan(30, 40, 40, 40);
 		new Thread(this).start();
 	}
 
@@ -47,7 +57,23 @@ public class WinterScenePanel extends JPanel implements Runnable
 		window.drawString("MAKE A WINTER SCENE!",40,40);
 
 		//make the snowman appear
+                sMan.draw(window);
 		//make the snowflakes appear and move down the screen
+                for (AbstractShape shap: shapes ) {
+                    shap.moveAndDraw(window);
+                    if (shap.getYPos() > 500) {
+                        shap.setYPos(0);
+                    }
+                 
+                }
+                
+                for (AbstractShape shap: fancyshapes ) {
+                    shap.moveAndDraw(window);
+                    if (shap.getYPos() > 500) {
+                        shap.setYPos(0);
+                    }
+                 
+                }
 		//check to see if any of the snowflakes need to be reset to the top of the screen
 	}
 
