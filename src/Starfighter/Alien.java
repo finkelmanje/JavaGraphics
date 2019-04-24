@@ -10,7 +10,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.imageio.ImageIO;
-
+//aliens will move side to side all together and will disappear when shot
 public class Alien extends MovingThing
 {
 	private int speed;

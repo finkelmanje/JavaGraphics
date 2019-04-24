@@ -55,13 +55,19 @@ public class Ammo extends MovingThing
 	public void move( String direction )
 	{
 		//add code to draw the ammo
-            if(shoot = true) {
-             if (direction.equals("UP")) {
+            if(shoot = true && getY() > 0) {
+          
                 
-                setY(getY() - speed);    
+              
+                setY(getY() - speed);
+                move("UP");
             }
+            else{
+                shoot = false;
             }
-	}
+            
+            }
+	
         
         public void canShoot(boolean ok) {
             shoot = ok;
