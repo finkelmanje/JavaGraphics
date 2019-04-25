@@ -23,5 +23,7 @@ public class Shiptest
         test3.setY(5);
         System.out.println("Ship 3 " + test2);
         
+        Alien test4 = new Alien(100,100, 50, 50,3);
+        System.out.println(test4);
     }
 }

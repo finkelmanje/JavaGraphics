@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
 public class Ammo extends MovingThing
 {
 	private int speed;
-        private boolean shoot;
+     //   private boolean shoot;
 
 	public Ammo()
 	{
@@ -55,23 +55,41 @@ public class Ammo extends MovingThing
 	public void move( String direction )
 	{
 		//add code to draw the ammo
-            if(shoot = true && getY() > 0) {
-          
-                
-              
-                setY(getY() - speed);
-                move("UP");
-            }
-            else{
-                shoot = false;
-            }
+            if (direction.equals("RIGHT") && getX() + getSpeed() < 800 - getWidth()) {
+			setX(getX() + getSpeed());
+		}
+		if (direction.equals("LEFT") && getX() - getSpeed() >= 0) {
+			setX(getX() - getSpeed());
+		}
+		if (direction.equals("UP") && getY() - getSpeed() >= 0) {
+			setY(getY() - getSpeed());
+		}
+		if (direction.equals("DOWN") && getY() + getSpeed() < 600 - getHeight()) {
+			setY(getY() + getSpeed());
+		}
             
             }
+        
+        public boolean Collide(MovingThing mt) {
+		if (partialCollision(this.getX(), this.getY() + this.getHeight() / 2, mt))
+			return true;
+		else if (partialCollision(this.getX() + this.getWidth(), this.getY() + this.getHeight() / 2, mt))
+			return true;
+		else if (partialCollision(this.getX() + this.getWidth() / 2, this.getY(), mt))
+			return true;
+		else if (partialCollision(this.getX() + this.getWidth() / 2, this.getY() + this.getHeight(), mt))
+			return true;
+		return false;
+	}
+        
+        private boolean partialCollision(int pointX, int pointY, MovingThing move) {
+		return pointX > move.getX() && pointX < move.getX() + move.getWidth() && pointY > move.getY() && pointY < move.getY() + move.getHeight();
+	}
 	
         
-        public void canShoot(boolean ok) {
-            shoot = ok;
-        }
+      //  public void canShoot(boolean ok) {
+         //   shoot = ok;
+      //  }
 
 	public String toString()
 	{

@@ -4,6 +4,7 @@ package Starfighter;
 //www.apluscompsci.com
 //Name -
 
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -14,36 +15,59 @@ import java.util.List;
 
 public class Bullets
 {
-	private List<Ammo> ammo;
+	private List<Ammo> ammoList;
 
 	public Bullets()
 	{
+		ammoList = new ArrayList<Ammo>();
 	}
 
-	public void add(Ammo al)
+	public void add(Ammo ammo)
 	{
+		ammoList.add(ammo);
 	}
-
-	//post - draw each Ammo
-	public void drawEmAll( Graphics window )
+		
+	public void drawEmAll(Graphics window)
 	{
+		for (Ammo ammo : ammoList)
+		{
+			ammo.draw(window);
+		}
 	}
 
 	public void moveEmAll()
 	{
+		for (Ammo ammo : ammoList)
+		{
+			ammo.move("UP");
+		}
 	}
 
 	public void cleanEmUp()
 	{
+		for (int i = 0; i < ammoList.size(); i++)
+		{
+			if (ammoList.get(i).getY() - ammoList.get(i).getSpeed() < 0)
+			{
+				ammoList.remove(i);
+				i--;
+			}
+		}
 	}
 
 	public List<Ammo> getList()
 	{
-		return null;
+		return ammoList;
 	}
 
 	public String toString()
 	{
-		return "";
+		String a = "";
+		for (Ammo ammo : ammoList)
+		{
+			a += ammo.toString();
+		}
+		return a;
 	}
 }
+
