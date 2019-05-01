@@ -69,6 +69,14 @@ public class PictureTester
     beach.explore();
   }
   
+  public static void testGreyscale()
+  {
+    Picture beach = new Picture("src/PixLab/images/beach.jpg");
+    beach.explore();
+    beach.greyscale();
+    beach.explore();
+  }
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -99,6 +107,7 @@ public class PictureTester
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
     //testKeepOnlyBlue();
-    testNegate();
+    //testNegate();
+      testGreyscale();
   }
 }
