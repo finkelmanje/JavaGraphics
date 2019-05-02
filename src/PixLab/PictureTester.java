@@ -71,11 +71,69 @@ public class PictureTester
   
   public static void testGreyscale()
   {
+    Picture water = new Picture("src/PixLab/images/water.jpg");
+    water.explore();
+    water.greyscale();
+    water.explore();
+  }
+  
+  public static void testFixUnderwater()
+  {
+    Picture water = new Picture("src/PixLab/images/water.jpg");
+    water.explore();
+    water.fixUnderwater();
+    water.explore();
+  }
+  
+   public static void testMirroVerticalRighttoLeft()
+  {
     Picture beach = new Picture("src/PixLab/images/beach.jpg");
     beach.explore();
-    beach.greyscale();
+    beach.mirrorVerticalRightToLeft();
     beach.explore();
   }
+   
+   public static void testMirroHorizontal()
+  {
+    Picture beach = new Picture("src/PixLab/images/beach.jpg");
+    beach.explore();
+    beach.mirrorHorrizontal();
+    beach.explore();
+  }
+   
+   public static void testMirroHorizontalBotToTop()
+  {
+    Picture beach = new Picture("src/PixLab/images/beach.jpg");
+    beach.explore();
+    beach.mirrorHorrizontalBotToTop();
+    beach.explore();
+  }
+   
+    public static void testMirrorDiagonal()
+  {
+    Picture beach = new Picture("src/PixLab/images/beach.jpg");
+    beach.explore();
+    beach.mirrorDiagonal();
+    beach.explore();
+  }
+    
+    public static void testMirrorArms()
+  {
+    Picture snowman = new Picture("src/PixLab/images/snowman.jpg");
+    snowman.explore();
+    snowman.mirrorArms();
+    snowman.explore();
+  }
+    
+    public static void testMirrorGull()
+  {
+    Picture gull = new Picture("src/PixLab/images/seagull.jpg");
+    gull.explore();
+    gull.mirrorGull();
+    gull.explore();
+  }
+  
+  
   
   /** Main method for testing.  Every class can have a main
     * method in Java */
@@ -94,7 +152,7 @@ public class PictureTester
     //testMirrorVertical();
     //testMirrorTemple();
     //testMirrorArms();
-    //testMirrorGull();
+    testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
     //testCopy();
@@ -108,6 +166,12 @@ public class PictureTester
     //testGetAverageForColumn(0);
     //testKeepOnlyBlue();
     //testNegate();
-      testGreyscale();
-  }
+     // testGreyscale();
+     // testFixUnderwater();
+    //  testMirroVerticalRighttoLeft();
+      //testMirroHorizontal();
+      //testMirroHorizontalBotToTop();
+     // testMirrorDiagonal();
+      
+}
 }
