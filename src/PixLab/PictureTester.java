@@ -132,6 +132,14 @@ public class PictureTester
     gull.mirrorGull();
     gull.explore();
   }
+    
+    public static void testCopy2()
+  {
+    Picture gull = new Picture("src/PixLab/images/seagull.jpg");
+    gull.explore();
+    gull.mirrorGull();
+    gull.explore();
+  }
   
   
   
@@ -152,7 +160,7 @@ public class PictureTester
     //testMirrorVertical();
     //testMirrorTemple();
     //testMirrorArms();
-    testMirrorGull();
+  //  testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
     //testCopy();
@@ -172,6 +180,7 @@ public class PictureTester
       //testMirroHorizontal();
       //testMirroHorizontalBotToTop();
      // testMirrorDiagonal();
+      testCopy2();
       
 }
 }
