@@ -405,6 +405,7 @@ public class Picture extends SimplePicture
      
       
       public void copy2() {
+          
       }
    
    

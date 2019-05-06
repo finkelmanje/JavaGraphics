@@ -137,7 +137,7 @@ public class PictureTester
   {
     Picture gull = new Picture("src/PixLab/images/seagull.jpg");
     gull.explore();
-    gull.mirrorGull();
+    gull.copy2();
     gull.explore();
   }
   
