@@ -145,6 +145,18 @@ public class PictureTester
     //gull.copy2();
     gull.explore();
   }
+    
+    public static void testBlur(int x, int y, int w, int h, int n)
+{
+   Picture redMoto = new Picture("src/PixLab/images/redMotorcycle.jpg");
+   redMoto.explore();
+   for (int i = 0; i<n; i++){
+      redMoto.blur(x,y,w,h);
+      System.out.println("loop done");
+    }
+   redMoto.explore();
+}
+
   
   
   
@@ -185,7 +197,9 @@ public class PictureTester
       //testMirroHorizontal();
       //testMirroHorizontalBotToTop();
      // testMirrorDiagonal();
-      testCopy2();
+     // testCopy2();
+      testBlur(180,160,25,25,10); 
+
       
 }
 }
