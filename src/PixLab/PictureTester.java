@@ -1,4 +1,7 @@
 package PixLab;
+import java.awt.Image;
+import javax.imageio.ImageIO;
+import java.io.File;
 
 /**
  * This class contains class (static) methods
@@ -135,9 +138,11 @@ public class PictureTester
     
     public static void testCopy2()
   {
-    Picture gull = new Picture("src/PixLab/images/seagull.jpg");
+       //image = ImageIO.read(new File("C:\\Users\\Administrator\\Documents\\NetBeansProjects\\JavaGraphics\\src\\Pixlab\\images\\seagull.jpg"));
+   // Picture gull = new Picture(image);
+    Picture gull = new Picture("C:\\Users\\Administrator\\Documents\\NetBeansProjects\\JavaGraphics\\src\\PixLab\\images\\seagull.jpg");
     gull.explore();
-    gull.copy2();
+    //gull.copy2();
     gull.explore();
   }
   
