@@ -4,98 +4,82 @@ package Starfighter;
 //www.apluscompsci.com
 //Name -
 
-import java.awt.Color;
+ import java.awt.Color;
 import java.awt.Graphics;
 
-public abstract class MovingThing implements Moveable
+public abstract class MovingThing implements Locatable
 {
 	private int xPos;
 	private int yPos;
-	private int width;
-	private int height;
 
 	public MovingThing()
 	{
-		xPos = 10;
-		yPos = 10;
-		width = 10;
-		height = 10;
+		//add more code
+		xPos = 50;
+		yPos = 50;
 	}
 
 	public MovingThing(int x, int y)
 	{
+		//add more code
 		xPos = x;
 		yPos = y;
-		width = 10;
-		height = 10;
-	}
-
-	public MovingThing(int x, int y, int w, int h)
-	{
-		//add code here
-                xPos = x;
-		yPos = y;
-		width = w;
-		height = h;
-            
 	}
 
 	public void setPos( int x, int y)
 	{
-		//add code here
-            xPos = x;
-            yPos = y;
+		//add more code
+		xPos = x;
+		yPos = y;
 	}
+
 
 	public void setX(int x)
 	{
-		//add code here
-            xPos = x;
+		//add more code
+		xPos = x;
 	}
+
 
 	public void setY(int y)
 	{
-		//add code here
-            yPos = y;
+		//add more code
+		yPos = y;
 	}
 
 	public int getX()
 	{
-		return xPos;   //finish this method
+		return xPos;
 	}
+
 
 	public int getY()
 	{
-		return yPos;  //finish this method
+		return yPos;
 	}
 
-	public void setWidth(int w)
-	{
-		//add code here
-            width = w;
-	}
-
-	public void setHeight(int h)
-	{
-		//add code here
-            height = h;
-	}
-
-	public int getWidth()
-	{
-		return width;  //finish this method
-	}
-
-	public int getHeight()
-	{
-		return height;  //finish this method
-	}
-
-	public abstract void move(String direction);
+	public abstract void setSpeed( int s );
+	public abstract int getSpeed();
 	public abstract void draw(Graphics window);
+
+	public void move(String direction)
+	{
+		if(direction.equals("LEFT"))
+	      setX(getX()-getSpeed());
+
+      //add more code to complete the move method
+		if(direction.equals("RIGHT"))
+			setX(getX()+getSpeed());
+		
+		if(direction.equals("UP"))
+			setY(getY()-getSpeed());
+		
+		if(direction.equals("DOWN"))
+			setY(getY()+getSpeed());
+	}
 
 	public String toString()
 	{
-		return getX() + " " + getY() + " " + getWidth() + " " + getHeight();
+		return "MovingThing";
 	}
 }

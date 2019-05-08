@@ -4,13 +4,12 @@ package Starfighter;
 //www.apluscompsci.com
 //Name -
 
-import java.io.File;
-import java.net.URL;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.io.File;
 import javax.imageio.ImageIO;
-//aliens will move side to side all together and will disappear when shot
+
 public class Alien extends MovingThing
 {
 	private int speed;
@@ -18,44 +17,35 @@ public class Alien extends MovingThing
 
 	public Alien()
 	{
-		this(0,0,30,30,0);
+		this(0,0,2);
 	}
 
 	public Alien(int x, int y)
 	{
-		//add code here
-            super.setPos(x, y);
+		this(x,y,2);
 	}
 
 	public Alien(int x, int y, int s)
 	{
-		//add code here
-             super.setPos(x, y);
-             speed = s;
-	}
-
-	public Alien(int x, int y, int w, int h, int s)
-	{
-		super(x, y, w,h);
+		super(x, y);
 		speed=s;
 		try
 		{
-			//URL url = getClass().getResource("images/alien.jpg");
+                    //URL url = getClass().getResource("images/ship.jpg");
 			//image = ImageIO.read(url);
-                     image = ImageIO.read(new File("C:\\Users\\Administrator\\Documents\\NetBeansProjects\\JavaGraphics\\src\\Starfighter\\images\\alien.JPG"));
-		
-                }
+			image = ImageIO.read(new File("src/Starfighter/images/alien.jpg"));
+		}
 		catch(Exception e)
 		{
 			//feel free to do something here
-                    System.out.println("sad");
-                    
+			System.out.println("Image not found. ");
 		}
 	}
 
 	public void setSpeed(int s)
 	{
-	   speed = s;
+	   //add code
+		speed = s;
 	}
 
 	public int getSpeed()
@@ -63,28 +53,17 @@ public class Alien extends MovingThing
 	   return speed;
 	}
 
-   public void move(String direction)
-	{
-	   //add code here
-            if (direction.equals("LEFT")) {
-			setX(getX() - speed);
-		} else if (direction.equals("RIGHT")) {
-			setX(getX() + speed);
-		}else if (direction.equals("UP")) {
-			setY(getY() - speed);
-		} else if (direction.equals("DOWN")) {
-			setY(getY() + speed);
-		}
-            
-	}
-
 	public void draw( Graphics window )
 	{
-   	window.drawImage(image,getX(),getY(),getWidth(),getHeight(),null);
+		window.drawImage(image,getX(),getY(),80,80,null);
+		move("RIGHT");
+		
+		
+
 	}
 
 	public String toString()
 	{
-		return super.toString() + " " + getSpeed();
+		return super.toString() + getSpeed();
 	}
 }
