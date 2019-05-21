@@ -1,4 +1,4 @@
-package Starfighter;
+package JohnFinkelman_starfighter;
 
 //(c) A+ Computer Science
 //www.apluscompsci.com
@@ -29,6 +29,7 @@ public class StarFighter extends JFrame
 
 	public static void main( String args[] )
 	{
+                System.out.println("John Finkelman, Period 1, May 8, Computer#25");
 		StarFighter run = new StarFighter();
 	}
 }

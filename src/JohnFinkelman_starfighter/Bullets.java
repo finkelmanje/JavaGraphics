@@ -1,4 +1,4 @@
-package Starfighter;
+package JohnFinkelman_starfighter;
 
 //(c) A+ Computer Science
 //www.apluscompsci.com

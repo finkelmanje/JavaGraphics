@@ -1,4 +1,4 @@
-package Starfighter;
+package JohnFinkelman_starfighter;
 
 //(c) A+ Computer Science
 //www.apluscompsci.com
@@ -47,7 +47,7 @@ public class Ammo extends MovingThing
 
 	public void aliendraw(Graphics window){
 		window.setColor(Color.RED);
-		window.fillRect(getX(), getY(), 2, 2);
+		window.fillRect(getX(), getY(), 3, 3);
 		move("DOWN");
 	}
 	

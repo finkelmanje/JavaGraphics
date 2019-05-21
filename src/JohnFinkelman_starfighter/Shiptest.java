@@ -1,4 +1,4 @@
-package Starfighter;
+package JohnFinkelman_starfighter;
 
 //(c) A+ Computer Science
 //www.apluscompsci.com
@@ -22,5 +22,9 @@ public class Shiptest
         test3.setX(3);
         test3.setY(5);
         System.out.println("Ship 3 " + test2);
+        
+        
+        MovingThing test1 = new PowerUp();
+        System.out.println("PowerUp" + test1);
     }
 }

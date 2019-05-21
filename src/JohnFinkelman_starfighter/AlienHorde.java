@@ -1,4 +1,4 @@
-package Starfighter;
+package JohnFinkelman_starfighter;
 
 //(c) A+ Computer Science
 //www.apluscompsci.com
@@ -54,8 +54,9 @@ public class AlienHorde {
 				counter = 0;
 		}
 	}
+}
 
-	public void removeDeadOnes(List<Ammo> shots) {
+	/*public void removeDeadOnes(List<Ammo> shots) {
 		for (int i = 0; i < shots.size(); i++)
 			for (int j = 0; j < aliens.size(); j++)
 				try { 
@@ -79,3 +80,4 @@ public class AlienHorde {
 		return "";
 	}
 }
+*/

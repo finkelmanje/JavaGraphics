@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Starfighter;
+package JohnFinkelman_starfighter;
 
 /**
  *
@@ -15,6 +15,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
+import java.net.URL;
 import javax.imageio.ImageIO;
 
 
@@ -22,15 +23,17 @@ import javax.imageio.ImageIO;
 
 public class PowerUp extends MovingThing {
 	
-	static int rX = (int)(Math.random()*700);
-	static int rY = (int)(Math.random()*200+300);
+	static int X = (int)(Math.random()*700);
+	static int Y = (int)(Math.random()*200+300);
 	Image image;
 	
 	public PowerUp(){
-		super(rX,rY);
+		super(X,Y);
 		try
 		{
-			image = ImageIO.read(new File("src/Starfighter/images/pu.jpg"));
+                    
+                      URL url = getClass().getResource("images/pu.jpg");
+			image = ImageIO.read(url);
 		}
 		catch(Exception e)
 		{
@@ -40,7 +43,7 @@ public class PowerUp extends MovingThing {
 	}
 
 	public void setSpeed(int s) {
-		// TODO Auto-generated method stub
+		
 	}
 
 	public int getSpeed() {
@@ -50,5 +53,10 @@ public class PowerUp extends MovingThing {
 	public void draw(Graphics window) {
 		window.drawImage(image,getX(),getY(),40,40,null);
 		
+	}
+        
+        public String toString()
+	{
+		return " PowerUp works";
 	}
 }

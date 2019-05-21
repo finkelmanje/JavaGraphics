@@ -1,4 +1,4 @@
-package Starfighter;
+package JohnFinkelman_starfighter;
 
 //(c) A+ Computer Science
 //www.apluscompsci.com
@@ -156,7 +156,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		
 		
 		
-		for(int i=0;i<aliens.size();i++){
+		for(int i=0;i<aliens.size(); i++){
 			int thispos = (int)(Math.random()*700);
 			if(thispos<aliens.get(i).getX()-400||thispos>aliens.get(i).getX()+400){
 				alienshots.add(new Ammo(aliens.get(i).getX()+36,aliens.get(i).getY(),1));
@@ -164,9 +164,10 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		}
 		
 		
-		for(int i=0;i<alienshots.size();i++){
+		for(int i=0;i<alienshots.size() - 8;i++){
 			alienshots.get(i).aliendraw(graphToBack);
 			if(puActivated==false){
+                            
 				if(ship.getX()+80>=alienshots.get(i).getX() &&	ship.getX()<=alienshots.get(i).getX()&&	ship.getY()+80 >= alienshots.get(i).getY() &&	ship.getY()<=alienshots.get(i).getY()){
 					graphToBack.setColor(Color.BLACK);
 					graphToBack.drawString("Score: " + score, 500, 500);
@@ -187,30 +188,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		
 		for(int i=0;i<shots.size();i++){
 			shots.get(i).draw(graphToBack);
-//			if((alienOne.getX()+80>=shots.get(i).getX()&&alienOne.getX()<=shots.get(i).getX())&&
-//					(alienOne.getY()+80>=shots.get(i).getY()&&alienOne.getY()<=shots.get(i).getY())){
-//				if(shots.get(i).getSpeed()==6){
-//					alienOne.setPos(1200, 1200);
-//					graphToBack.setColor(Color.BLACK);
-//					graphToBack.drawString("Score: " + score, 500, 500);
-//					score += 24;
-//					graphToBack.setColor(Color.CYAN);
-//					graphToBack.drawString("Score: " + score, 500, 500);
-//					shots.get(i).setPos(5000,0);
-//				}
-//			}
-//			if((alienTwo.getX()+80>=shots.get(i).getX()&&alienTwo.getX()<=shots.get(i).getX())&&
-//					(alienTwo.getY()+80>=shots.get(i).getY()&&alienTwo.getY()<=shots.get(i).getY())){
-//				if(shots.get(i).getSpeed()==6){
-//					alienTwo.setPos(1200, 1200);
-//					graphToBack.setColor(Color.BLACK);
-//					graphToBack.drawString("Score: " + score, 500, 500);
-//					score += 24;
-//					graphToBack.setColor(Color.CYAN);
-//					graphToBack.drawString("Score: " + score, 500, 500);
-//					shots.get(i).setPos(5000,0);
-//				}
-//			}
+//			
 			for(int a=0;a<aliens.size();a++){
 				if((aliens.get(a).getX()+80>=shots.get(i).getX()&&aliens.get(a).getX()<=shots.get(i).getX())&&
 						(aliens.get(a).getY()+80>=shots.get(i).getY()&&aliens.get(a).getY()<=shots.get(i).getY())){
@@ -218,7 +196,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 					aliens.remove(aliens.get(a));
 					graphToBack.setColor(Color.BLACK);
 					graphToBack.drawString("Score: " + score, 500, 500);
-					score += 30;
+					score += 500;
 					graphToBack.setColor(Color.CYAN);
 					graphToBack.drawString("Score: " + score, 500, 500);
 					shots.get(i).setPos(5000,0);
@@ -226,25 +204,10 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 				}
 			}
 		}
-		
-		if(ship.getX()>750||ship.getX()<-50||ship.getY()>500||ship.getY()<-50){
-			graphToBack.setColor(Color.CYAN);
-			graphToBack.drawString("You are lost in space! Return to the battle zone!", 200, 550);;
-		}
-		if(ship.getX()<750&&ship.getY()<500&&ship.getX()>-50&&ship.getY()>-50){
-			graphToBack.setColor(Color.BLACK);
-			graphToBack.drawString("You are lost in space! Return to the battle zone!", 200, 550);;
-		}
 			
 		
 		
-		
-//		if(alienOne.getX()<10||alienOne.getX()>700){
-//			alienOne.setSpeed((alienOne.getSpeed())*-1);
-//		}
-//		if(alienTwo.getX()<10||alienTwo.getX()>700){
-//			alienTwo.setSpeed((alienTwo.getSpeed())*-1);
-//		}
+//		
 		
 		//add in collision detection
 		for(int i=0;i<aliens.size();i++){
@@ -253,20 +216,20 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 			}
 		}
 		
-//		if(alienOne.getX()<10||alienOne.getX()>700){
-//			alienOne.setSpeed((alienOne.getSpeed())*-1);
-//		}
-//		if(alienTwo.getX()<10||alienTwo.getX()>700){
-//			alienTwo.setSpeed((alienTwo.getSpeed())*-1);
-//		}
+
 		for(int a=0;a<aliens.size();a++){
 				if((aliens.get(a).getX()+80>=ship.getX()&&aliens.get(a).getX()<=ship.getX())&&
 						(aliens.get(a).getY()+80>=ship.getY()&&aliens.get(a).getY()<=ship.getY())){
-					for(int b=0;b<aliens.size();b++){
-						lose = true;
-					}
+	
+                                                score-=50;
+						
 					
 				}
+                                
+                                 if ((aliens.get(a).getX()+80>=ship.getX()&&aliens.get(a).getX()<=ship.getX())&&
+						(aliens.get(a).getY()+80>=ship.getY()&&aliens.get(a).getY()<=ship.getY()) && score < -4000) {
+                                    lose = true;
+                                }
 		}
 		
 		if(!lose&&aliens.size()==0){
@@ -284,8 +247,9 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 			for(int i=0;i<alienshots.size();i++){
 				alienshots.get(i).setPos(5000,0);
 			}
+                        
 			graphToBack.setColor(Color.CYAN);
-			graphToBack.drawString("YOU LOST!", 250, 250);
+			graphToBack.drawString("You lost by taking too much damage!", 250, 250);
 			ship.setPos(8000, 8000);
 		}
 		

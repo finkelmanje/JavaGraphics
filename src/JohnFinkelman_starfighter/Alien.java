@@ -1,4 +1,4 @@
-package Starfighter;
+package JohnFinkelman_starfighter;
 
 //(c) A+ Computer Science
 //www.apluscompsci.com
@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
 import javax.imageio.ImageIO;
+import java.net.URL;
 
 public class Alien extends MovingThing
 {
@@ -31,9 +32,8 @@ public class Alien extends MovingThing
 		speed=s;
 		try
 		{
-                    //URL url = getClass().getResource("images/ship.jpg");
-			//image = ImageIO.read(url);
-			image = ImageIO.read(new File("src/Starfighter/images/alien.jpg"));
+                    URL url = getClass().getResource("images/ship.jpg");
+			image = ImageIO.read(url);
 		}
 		catch(Exception e)
 		{
