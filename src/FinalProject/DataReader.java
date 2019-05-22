@@ -15,18 +15,28 @@ import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.*;
-public class URLReader {
+
+public class DataReader {
     String line = "";
      String csvFile = "C:/Users/finkelmanj7070/Downloads/HistoricalQuotes.csv";
      BufferedReader br;
      ArrayList<String> stringdata = new ArrayList<>();
       ArrayList<Double> doubledata = new ArrayList<>();
     
-    public URLReader() {
+    public DataReader() {
         try {
             this.br = new BufferedReader(new FileReader(csvFile));
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(URLReader.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataReader.class.getName()).log(Level.SEVERE, null, ex);
+        }
+}
+    
+    public DataReader(String fileloc) {
+     csvFile = fileloc;
+        try {
+            this.br = new BufferedReader(new FileReader(csvFile));
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(DataReader.class.getName()).log(Level.SEVERE, null, ex);
         }
 }
         
@@ -40,22 +50,30 @@ public class URLReader {
                 stringdata.add(cols[1]);
                 System.out.println("Coulmn 1= " + cols[1]);
                 
-                //int [] arr = new int [size];
-    //  for(int i=0; i<size; i++) {
-        // arr[i] = Integer.parseInt(str[i]);
+                //double [] arr = new double [stringdata.size() - 1];
+    //  for(int i=1; i<stringdata.size(); i++) {
+        // arr[i] = Double.parseDouble(str[i]);
    //   }
                 
                 
             }       } catch (IOException ex) {
-            Logger.getLogger(URLReader.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DataReader.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         System.out.println(stringdata);
-        for (String myInt : stringdata) 
-            { 
-              doubledata.add(Double.valueOf(myInt)); 
-            }
-            System.out.println(doubledata);
+      //  for (int i = 1; i < stringdata.size(); i++) 
+          //  { 
+         //     doubledata.add(Double.valueOf(stringdata.get(i))); 
+         //   }
+          //  System.out.println(doubledata);
+       //  double [] arr = new double[stringdata.size() - 1];
+      for(int i=1; i<stringdata.size(); i++) {
+          String number = stringdata.get(i);
+          System.out.println(number);
+      //   double convertednumber = Double.parseDouble(number);
+      //   System.out.println(convertednumber);
+     }
+     // System.out.println(arr);
 }
 }
 

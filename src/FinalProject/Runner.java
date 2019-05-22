@@ -12,7 +12,7 @@ package FinalProject;
 public class Runner {
       public static void main( String args[] )
     {
-   URLReader rd = new URLReader();
+   DataReader rd = new DataReader();
    rd.readIn();
    
         
