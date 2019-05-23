@@ -18,7 +18,9 @@ import java.util.*;
 
 public class DataReader {
     String line = "";
-     String csvFile = "C:/Users/finkelmanj7070/Downloads/HistoricalQuotes.csv";
+    // String csvFile = "C:/Users/finkelmanj7070/Downloads/HistoricalQuotes.csv";
+      String csvFile = "C:/Users/John/Downloads/HistoricalQuotes.csv";
+
      BufferedReader br;
      ArrayList<String> stringdata = new ArrayList<>();
       ArrayList<Double> doubledata = new ArrayList<>();
@@ -70,8 +72,8 @@ public class DataReader {
       for(int i=1; i<stringdata.size(); i++) {
           String number = stringdata.get(i);
           System.out.println(number);
-      //   double convertednumber = Double.parseDouble(number);
-      //   System.out.println(convertednumber);
+       double convertednumber = Double.parseDouble(number);
+        System.out.println(convertednumber);
      }
      // System.out.println(arr);
 }
