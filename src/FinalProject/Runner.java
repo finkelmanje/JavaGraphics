@@ -9,12 +9,33 @@ package FinalProject;
  *
  * @author finkelmanj7070
  */
-public class Runner {
-      public static void main( String args[] )
-    {
-   DataReader rd = new DataReader();
-   rd.readIn();
-   
+import java.util.*;
+import java.io.*;
+
+public class Runner implements Serializable {
+
+    public static void main(String args[]) {
+        DataReader rd = new DataReader();
+        rd.readIn();
+   //this process comes from https://www.geeksforgeeks.org/serialization-in-java/
+  /*  try { 
+  
+         // Saving of object in a file 
+         FileOutputStream file = new FileOutputStream 
+         (filename); 
+         ObjectOutputStream out = new ObjectOutputStream 
+         (file); 
+  
+         // Method for serialization of object 
+         out.writeObject(object); 
+  
+         out.close(); 
+         file.close(); 
+  
+         System.out.println("Object has been serialized\n"
+         + "Data before Deserialization."); 
+         printdata(object); 
         
-}
+         } */
+    }
 }
