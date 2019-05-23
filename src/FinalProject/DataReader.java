@@ -72,7 +72,9 @@ public class DataReader {
       for(int i=1; i<stringdata.size(); i++) {
           String number = stringdata.get(i);
           System.out.println(number);
-       double convertednumber = Double.parseDouble(number);
+          String number1 = number.replace("\"", "");
+          System.out.println(number1);
+      double convertednumber = Double.parseDouble(number1);
         System.out.println(convertednumber);
      }
      // System.out.println(arr);
