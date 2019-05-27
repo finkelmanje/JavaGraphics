@@ -67,7 +67,7 @@ public class DataReader {
         }
 
     }
-    
+
     public ArrayList<Double> getNumData() {
         return doubledata;
     }
