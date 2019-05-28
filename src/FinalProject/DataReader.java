@@ -18,7 +18,7 @@ import java.util.*;
 public class DataReader {
 
     String line = "";
-    String csvFile = "C:/Users/finkelmanj7070/Downloads/HistoricalQuotes.csv";
+    String csvFile = "C:/Users/finkelmanj7070/Downloads/TSLA.csv";
     // String csvFile = "C:/Users/John/Downloads/HistoricalQuotes.csv";
 
     BufferedReader br;
@@ -48,8 +48,8 @@ public class DataReader {
             while ((line = br.readLine()) != null) {
                 // use comma as separator
                 String[] cols = line.split(",");
-                stringdata.add(cols[1]);
-                System.out.println("Coulmn 1= " + cols[1]);
+                stringdata.add(cols[4]);
+                System.out.println("Coulmn 4= " + cols[1]);
 
             }
         } catch (IOException ex) {
@@ -63,8 +63,10 @@ public class DataReader {
             String number1 = number.replace("\"", "");
             double convertednumber = Double.parseDouble(number1);
             doubledata.add(convertednumber);
+              
 
         }
+          System.out.println(doubledata);
 
     }
 
