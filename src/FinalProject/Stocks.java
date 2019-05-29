@@ -9,6 +9,10 @@ package FinalProject;
  *
  * @author finkelmanj7070
  */
-public class Stocks {
+public class Stocks extends Security {
+    
+    public Stocks(String nm, String tk, Double currprice, String fl) {
+        super(nm, tk, currprice, fl);
+    }
     
 }

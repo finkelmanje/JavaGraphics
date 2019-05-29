@@ -12,13 +12,18 @@ import java.util.*;
  *
  * @author finkelmanj7070
  */
-public abstract class Security extends DataReader implements SecurityComparable {
+public class Security extends DataReader{
 
     private String name;
     private String ticker;
     private Double cp;
     private ArrayList<Double> securityNumData;
     private int graphInterval;
+    private Double slope;
+    private Double expectedprice;
+    private Boolean hasER = false;
+    private Double expenseRatio = 0.0;
+    public ArrayList<Security> securityList = new ArrayList<>();
 
     public Security(String nm, String tk, Double currprice) {
         name = nm;
@@ -39,40 +44,63 @@ public abstract class Security extends DataReader implements SecurityComparable 
     //determines the historical % gain or loss that the security had from the present to the set timeperiod (10 days ago, 265 days ago, etc.)
     //aka the ratio between the current price and previous price times 100
     public double avggain(int timeperiod) {
-        return 100*cp/securityNumData.get(timeperiod) ;      
+        return 100 * cp / securityNumData.get(timeperiod);
     }
 
-    
     //given an interval in days, calculates the average change in price and creates a slope from that
     public double calcslope(int interval) {
         setGraphInterval(interval);
-        
+
         double differencesum = 0;
-        
+
         for (int i = 0; i < interval - 1; i++) {
-            differencesum+= securityNumData.get(i) - securityNumData.get(i-1);
+            differencesum += securityNumData.get(i) - securityNumData.get(i - 1);
         }
-        
-        double avgdifference = differencesum/interval;
-        
-        return avgdifference;
+
+        setSlope((Double) differencesum / interval);
+
+        return getSlope();
     }
 
     //takes the most recent point, the current price, to estimate a "y-intercept" for the line
-    public abstract double calcyint();  
-    
-    
-    
-    
-    public abstract double finalLine();
-    
-    
-   /* public String compareGrowth(ArrayList<Security> arr, int timeperiod) {
-        
-    }
-    */
-    
+    public double finalLine() {
 
+        Scanner keyboard = new Scanner(System.in);
+        System.out.print("Enter a time interval to base your line off::  ");
+        int inp = keyboard.nextInt();
+        setSlope((Double) calcslope(inp));
+
+        return getSlope();
+
+    }
+
+    //returns the expected value of an inputed amount of money in an inputed amount of days 
+    public double expectedGrowth(double money, int timeperiod) {
+        double amount = money / cp;
+        setExpectedprice(timeperiod * getSlope() + getCp());
+       
+        if(getHasER()) {
+        return amount * getExpectedprice() - (getExpenseRatio()*(timeperiod/365)*amount*getExpectedprice());
+        }
+        else {
+        
+         return amount * getExpectedprice();
+        }
+    }
+
+     public String compareGrowth(ArrayList<Security> arr, int timeperiod, double money) {
+        Security temp;
+    ArrayList<Security> copy = arr;
+    for (int i = arr.size() -1; i > 0; i--) {
+    if (copy.get(i).expectedGrowth(money, timeperiod) > copy.get(i-1).expectedGrowth(money, timeperiod)) {
+    temp = copy.get(i-1);
+    copy.set(i-1, copy.get(i));
+    copy.set(i, temp);
+    }
+     }
+    return copy.get(0).getName() + " has the largest growth potential";
+    }
+     
     /**
      * @return the name
      */
@@ -146,5 +174,77 @@ public abstract class Security extends DataReader implements SecurityComparable 
     public void setGraphInterval(int graphInterval) {
         this.graphInterval = graphInterval;
     }
+
+    /**
+     * @return the slope
+     */
+    public Double getSlope() {
+        return slope;
+    }
+
+    /**
+     * @param slope the slope to set
+     */
+    public void setSlope(Double slope) {
+        this.slope = slope;
+    }
+
+    /**
+     * @return the expectedprice
+     */
+    public Double getExpectedprice() {
+        return expectedprice;
+    }
+
+    /**
+     * @param expectedprice the expectedprice to set
+     */
+    public void setExpectedprice(Double expectedprice) {
+        this.expectedprice = expectedprice;
+    }
+
+    /**
+     * @return the hasER
+     */
+    public Boolean getHasER() {
+        return hasER;
+    }
+
+    /**
+     * @param hasER the hasER to set
+     */
+    public void setHasER(Boolean hasER) {
+        this.hasER = hasER;
+    }
+
+    /**
+     * @return the expenseRatio
+     */
+    public Double getExpenseRatio() {
+        return expenseRatio;
+    }
+
+    /**
+     * @param expenseRatio the expenseRatio to set
+     */
+    public void setExpenseRatio(Double expenseRatio) {
+        this.expenseRatio = expenseRatio;
+    }
+
+    /**
+     * @return the securityList
+     */
+    public ArrayList<Security> getSecurityList() {
+        return securityList;
+    }
+
+    /**
+     * @param securityList the securityList to set
+     */
+    public void setSecurityList(ArrayList<Security> securityList) {
+        this.securityList = securityList;
+    }
+
+   
 
 }

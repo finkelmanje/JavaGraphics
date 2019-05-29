@@ -12,12 +12,18 @@ package FinalProject;
 import java.util.*;
 import java.io.*;
 
-public class Runner implements Serializable {
+public class Runner extends Security implements Serializable {
 
+ 
     public static void main(String args[]) {
         DataReader rd = new DataReader();
         rd.readIn();
+        securityList.add(new Stocks("Tesla", "TSLA", 286.12,"C:/Users/finkelmanj7070/Downloads/TSLA.csv"));
+
    //this process comes from https://www.geeksforgeeks.org/serialization-in-java/
+        
+        //write to dat file and then read using scanner like earlier project
+        //look at https://github.com/mremington/JavaGolfApp/blob/master/src/golfApp/com/UserList.java
   /*  try { 
   
          // Saving of object in a file 

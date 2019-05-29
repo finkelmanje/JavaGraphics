@@ -9,6 +9,30 @@ package FinalProject;
  *
  * @author finkelmanj7070
  */
-public class MutualFunds {
-    
+public class MutualFunds extends Security {
+
+    private double expenseRatio;
+
+    public MutualFunds(String nm, String tk, Double currprice, String fl, Double er) {
+        super(nm, tk, currprice, fl);
+        setExpenseRatio(er);
+        setexpenseRatio(er);
+        setHasER(true);
+    }
+
+    /**
+     * @return the expenseRatio
+     */
+    public double getexpenseRatio() {
+        return expenseRatio;
+    }
+
+    /**
+     * @param expenseRatio the expenseRatio to set
+     */
+    public void setexpenseRatio(double expenseRatio) {
+        this.expenseRatio = expenseRatio;
+    }
+
 }
+
