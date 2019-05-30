@@ -23,7 +23,7 @@ public class Security extends DataReader{
     private Double expectedprice;
     private Boolean hasER = false;
     private Double expenseRatio = 0.0;
-    public ArrayList<Security> securityList = new ArrayList<>();
+    public  ArrayList<Security> securityList = new ArrayList<>();
 
     public Security(String nm, String tk, Double currprice) {
         name = nm;
@@ -38,6 +38,7 @@ public class Security extends DataReader{
         cp = currprice;
         super.readIn();
         securityNumData = super.getNumData();
+        readIn();
 
     }
 
@@ -48,18 +49,27 @@ public class Security extends DataReader{
     }
 
     //given an interval in days, calculates the average change in price and creates a slope from that
+    //this slope is used to determine your expected growth later on
     public double calcslope(int interval) {
+        
+        if(interval > securityNumData.size()) {
+            System.out.println("Your interval is larger than your data!");
+            return 0.0;
+        }
+        else {
+        
         setGraphInterval(interval);
 
         double differencesum = 0;
 
-        for (int i = 0; i < interval - 1; i++) {
+        for (int i = 1; i < interval; i++) {
             differencesum += securityNumData.get(i) - securityNumData.get(i - 1);
         }
 
         setSlope((Double) differencesum / interval);
 
         return getSlope();
+        }
     }
 
     //takes the most recent point, the current price, to estimate a "y-intercept" for the line
@@ -100,6 +110,10 @@ public class Security extends DataReader{
      }
     return copy.get(0).getName() + " has the largest growth potential";
     }
+     
+     public void addnewSecurity(Security sk) {
+         securityList.add(sk);
+     }
      
     /**
      * @return the name
@@ -157,9 +171,6 @@ public class Security extends DataReader{
         this.securityNumData = securityNumData;
     }
 
-    public String toString() {
-        return name + " " + ticker + ": " + cp;
-    }
 
     /**
      * @return the graphInterval
@@ -244,6 +255,11 @@ public class Security extends DataReader{
     public void setSecurityList(ArrayList<Security> securityList) {
         this.securityList = securityList;
     }
+    
+     public String toString() {
+        return name + " " + ticker + ": " + cp;
+    }
+    
 
    
 
