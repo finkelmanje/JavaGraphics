@@ -19,6 +19,7 @@ public class Runner implements Serializable {
       //  DataReader rd = new DataReader();
        // rd.readIn();
         
+        String nm = "cat";
         Stocks tsla = new Stocks("Tesla", "TSLA", 286.12,"C:/Users/John/Downloads/TSLA.csv");
         tsla.addnewSecurity(tsla);
      //   tsla.readIn();
