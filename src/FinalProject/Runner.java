@@ -20,7 +20,8 @@ public class Runner implements Serializable {
        // rd.readIn();
         
         String nm = "cat";
-        Stocks tsla = new Stocks("Tesla", "TSLA", 286.12,"C:/Users/John/Downloads/TSLA.csv");
+      //  Stocks tsla = new Stocks("Tesla", "TSLA", 286.12,"C:/Users/John/Downloads/TSLA.csv");
+         Stocks tsla = new Stocks("Tesla", "TSLA", 286.12,"C:/Users/finkelmanj7070/Downloads/TSLA.csv");
         tsla.addnewSecurity(tsla);
      //   tsla.readIn();
         System.out.println(tsla.getSecurityNumData().size());
@@ -28,13 +29,17 @@ public class Runner implements Serializable {
        System.out.println(tsla.calcslope(42));
      System.out.println(tsla.expectedGrowth(100, 10));
      
-     ETFs schb = new ETFs("Schwab Broad Market ETF","SCHB", 67.00,"C:/Users/John/Downloads/SCHB.csv" , 0.03);
+  //   ETFs schb = new ETFs("Schwab Broad Market ETF","SCHB", 67.00,"C:/Users/John/Downloads/SCHB.csv" , 0.03);
+      ETFs schb = new ETFs("Schwab","SCHB", 67.00,"C:/Users/finkelmanj7070/Downloads/SCHB.csv" , 0.03);
      tsla.addnewSecurity(schb);
      System.out.println(schb.calcslope(10));
      System.out.println(schb.expectedGrowth(100, 10));
   //   System.out.println(tsla.getSecurityList());
      
       System.out.println(tsla.compareGrowth(tsla.getSecurityList(), 10, 100));
+      
+      tsla.writeData(tsla.getSecurityList());
+      tsla.readData();
     // schb.readIn();
     
    

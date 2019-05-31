@@ -16,6 +16,7 @@ public class Security extends DataReader{
 
     private String name;
     private String ticker;
+    private String fileloc;
     private Double cp;
     private ArrayList<Double> securityNumData;
     private int graphInterval;
@@ -33,6 +34,7 @@ public class Security extends DataReader{
 
     public Security(String nm, String tk, Double currprice, String fl) {
         super(fl);
+        fileloc = fl;
         name = nm;
         ticker = tk;
         cp = currprice;
@@ -259,6 +261,10 @@ public class Security extends DataReader{
      public String toString() {
         return name + " " + ticker + ": " + cp;
     }
+     
+     public String toReadString() {
+         return name + " " + ticker + " " + cp + " " + fileloc;
+     }
     
 
    

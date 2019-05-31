@@ -19,6 +19,7 @@ public class DataReader {
 
     String line = "";
     String csvFile = "C:/Users/finkelmanj7070/Downloads/TSLA.csv";
+    private byte[] bytes;
     // String csvFile = "C:/Users/John/Downloads/HistoricalQuotes.csv";
 
     BufferedReader br;
@@ -63,14 +64,81 @@ public class DataReader {
             String number1 = number.replace("\"", "");
             double convertednumber = Double.parseDouble(number1);
             doubledata.add(convertednumber);
-              
 
         }
-          System.out.println(doubledata);
+        System.out.println(doubledata);
 
     }
 
     public ArrayList<Double> getNumData() {
         return doubledata;
     }
+
+    public void writeData(ArrayList<Security> secList) {
+        FileOutputStream fos = null;
+        File file;
+     // String mycontent = "This is my Data which needs" +
+        //     " to be written into the file";
+        try {
+            //Specify the file path here
+            file = new File("src/FinalProject/test.dat");
+            fos = new FileOutputStream(file);
+
+            /* This logic will check whether the file
+             * exists or not. If the file is not found
+             * at the specified location it would create
+             * a new file*/
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            /*String content cannot be directly written into
+             * a file. It needs to be converted into bytes
+             */
+       //   for (Double db: arr) {
+            //   String dlb =  db.toString();
+            // byte[] bytesArray = dlb.getBytes();
+            
+            //method borrowed from https://stackoverflow.com/questions/20869325/convert-arraylist-to-byte-array/20879137
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            DataOutputStream out = new DataOutputStream(baos);
+            for (Security sty : secList) {
+                out.writeUTF(sty.toReadString());
+            }
+            bytes = baos.toByteArray();
+            fos.write(bytes);
+
+            fos.flush();
+            System.out.println("File Written Successfully");
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        } finally {
+            try {
+                if (fos != null) {
+                    fos.close();
+                }
+            } catch (IOException ioe) {
+                System.out.println("Error in closing the Stream");
+            }
+        }
+    }
+
+    public void readData() {
+
+        try {
+            ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
+            DataInputStream in = new DataInputStream(bais);
+            while (in.available() > 0) {
+                String element = in.readUTF();
+                System.out.println(element);
+            }
+
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+
+    }
 }
+
+//load data to secList in UI.java
+//saving file location is ok, save all parts of constructor as strings separated by spaces and then each object is separated by line
