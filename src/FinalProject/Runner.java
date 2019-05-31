@@ -36,6 +36,8 @@ public class Runner implements Serializable {
      
       System.out.println(tsla.compareGrowth(tsla.getSecurityList(), 10, 100));
     // schb.readIn();
+    
+   
        
        
 

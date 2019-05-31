@@ -49,7 +49,7 @@ public class DataReader {
                 // use comma as separator
                 String[] cols = line.split(",");
                 stringdata.add(cols[4]);
-                System.out.println("Coulmn 4= " + cols[1]);
+                System.out.println("Coulmn 4= " + cols[4]);
 
             }
         } catch (IOException ex) {

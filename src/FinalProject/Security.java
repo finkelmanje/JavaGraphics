@@ -62,7 +62,7 @@ public class Security extends DataReader{
 
         double differencesum = 0;
 
-        for (int i = 1; i < interval; i++) {
+        for (int i = securityNumData.size() -1; i > securityNumData.size() - interval; i--) {
             differencesum += securityNumData.get(i) - securityNumData.get(i - 1);
         }
 
@@ -101,7 +101,7 @@ public class Security extends DataReader{
      public String compareGrowth(ArrayList<Security> arr, int timeperiod, double money) {
         Security temp;
     ArrayList<Security> copy = arr;
-    for (int i = arr.size() -1; i > 0; i--) {
+    for (int i = copy.size() -1; i > 0; i--) {
     if (copy.get(i).expectedGrowth(money, timeperiod) > copy.get(i-1).expectedGrowth(money, timeperiod)) {
     temp = copy.get(i-1);
     copy.set(i-1, copy.get(i));
