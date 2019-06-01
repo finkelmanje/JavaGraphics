@@ -43,6 +43,10 @@ public class Security extends DataReader{
         readIn();
 
     }
+    
+    public Security() {
+        
+    }
 
     //determines the historical % gain or loss that the security had from the present to the set timeperiod (10 days ago, 265 days ago, etc.)
     //aka the ratio between the current price and previous price times 100
@@ -263,7 +267,7 @@ public class Security extends DataReader{
     }
      
      public String toReadString() {
-         return name + " " + ticker + " " + cp + " " + fileloc;
+         return name + " " + ticker + " " + cp + " " + fileloc + " " + expenseRatio;
      }
     
 

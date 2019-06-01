@@ -42,6 +42,10 @@ public class DataReader {
             Logger.getLogger(DataReader.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public DataReader(int r) {
+        int c =r;
+    }
 
     public void readIn() {
         try {
@@ -81,7 +85,7 @@ public class DataReader {
         //     " to be written into the file";
         try {
             //Specify the file path here
-            file = new File("src/FinalProject/test.dat");
+            file = new File("src/FinalProject/saved.dat");
             fos = new FileOutputStream(file);
 
             /* This logic will check whether the file
@@ -105,8 +109,8 @@ public class DataReader {
             for (Security sty : secList) {
                 out.writeUTF(sty.toReadString());
             }
-            bytes = baos.toByteArray();
-            fos.write(bytes);
+            setBytes(baos.toByteArray());
+            fos.write(getBytes());
 
             fos.flush();
             System.out.println("File Written Successfully");
@@ -123,13 +127,33 @@ public class DataReader {
         }
     }
 
-    public void readData() {
-
-        try {
-            ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
+    public void readData(ArrayList<Security> secList) {
+FileInputStream fis = null;
+        File file;
+        try {  
+            file = new File("src/FinalProject/saved.dat");
+            fis = new FileInputStream(file);
+            bytes = new byte[(int) file.length()];
+            fis.read(bytes);
+            ByteArrayInputStream bais = new ByteArrayInputStream(getBytes());
             DataInputStream in = new DataInputStream(bais);
             while (in.available() > 0) {
                 String element = in.readUTF();
+               String[] arr = element.split(" ");
+                String nm = arr[0];
+                String tck = arr[1];
+                Double cp = Double.parseDouble(arr[2]);
+                String fl = arr[3];
+                Double er = Double.parseDouble(arr[4]);
+                if ( er == 0.0) {
+                    Stocks stk = new Stocks(nm, tck, cp, fl);
+                    secList.add(stk);
+                }
+                
+                else {
+                    ETFs etf = new ETFs(nm, tck, cp, fl, er);
+                    secList.add(etf);
+                } 
                 System.out.println(element);
             }
 
@@ -137,6 +161,20 @@ public class DataReader {
             ioe.printStackTrace();
         }
 
+    }
+
+    /**
+     * @return the bytes
+     */
+    public byte[] getBytes() {
+        return bytes;
+    }
+
+    /**
+     * @param bytes the bytes to set
+     */
+    public void setBytes(byte[] bytes) {
+        this.bytes = bytes;
     }
 }
 

@@ -88,6 +88,8 @@ public class UI extends javax.swing.JFrame {
         egBtn = new javax.swing.JButton();
         compBtn = new javax.swing.JButton();
         compTxtField = new javax.swing.JTextField();
+        saveBtn = new javax.swing.JButton();
+        loadBtn = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
@@ -247,6 +249,20 @@ public class UI extends javax.swing.JFrame {
             }
         });
 
+        saveBtn.setText("Save Added Securities");
+        saveBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveBtnActionPerformed(evt);
+            }
+        });
+
+        loadBtn.setText("Load Saved Securities");
+        loadBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -325,7 +341,11 @@ public class UI extends javax.swing.JFrame {
                                 .addComponent(etfBtn))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(179, 179, 179)
-                                .addComponent(newSec))
+                                .addComponent(newSec)
+                                .addGap(56, 56, 56)
+                                .addComponent(saveBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(loadBtn))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -400,7 +420,10 @@ public class UI extends javax.swing.JFrame {
                 .addGap(18, 21, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(newSec)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(newSec)
+                            .addComponent(saveBtn)
+                            .addComponent(loadBtn))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(viewSecListBtn)
@@ -630,6 +653,18 @@ public class UI extends javax.swing.JFrame {
       compTxtField.setText(selsec.compareGrowth(secList, tp, inv));
     }//GEN-LAST:event_compBtnActionPerformed
 
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+        // TODO add your handling code here:
+        
+        secList.get(0).writeData(secList);
+    }//GEN-LAST:event_saveBtnActionPerformed
+
+    private void loadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadBtnActionPerformed
+        // TODO add your handling code here:
+        DataReader dr = new DataReader(3);
+        dr.readData(secList);
+    }//GEN-LAST:event_loadBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -695,8 +730,10 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton loadBtn;
     private javax.swing.JButton mfBtn;
     private javax.swing.JButton newSec;
+    private javax.swing.JButton saveBtn;
     private javax.swing.JButton secBtn;
     private javax.swing.JTextField secTxtField;
     private javax.swing.JButton selsecBtn;
